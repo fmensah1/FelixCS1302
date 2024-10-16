@@ -1,0 +1,29 @@
+commit 4195d2cdd0a4426fc1849c0b8e95d06b1d419443
+Author: fmensah1 <fmensah1@my.westga.edu>
+Date:   Wed Oct 16 16:08:45 2024 -0400
+
+    Implemented fuctionality to sort our bill.
+    
+    Created classes to implement fuctionalit to sort our bill in ascending or descending order
+
+commit a802e92086b9d81ab202baf0c4f7f65ea56c43b5
+Author: fmensah1 <fmensah1@my.westga.edu>
+Date:   Wed Oct 16 11:39:11 2024 -0400
+
+    Implemented mutiple format functionality
+    
+    Made my BillPersistenceManager class a parent and created child classes CSVBillPersistenceManager and TVSBillPersistenceManager to save and load the bill in the tab format or space format.
+
+commit 0dcc932e6f03807c7fd2f86e97eb73a3a534f508
+Author: fmensah1 <fmensah1@my.westga.edu>
+Date:   Thu Oct 10 15:48:19 2024 -0400
+
+    Added starter file
+    
+    Added the starter file to the repository
+
+commit 79a3028ff77f558b4abe9a7c37063d5080124468
+Author: fmensah1 <fmensah1@my.westga.edu>
+Date:   Mon Oct 7 03:46:17 2024 -0400
+
+    Initial commit
