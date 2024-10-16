@@ -1,2 +1,4 @@
 Bob
-Felix	25.0
+rice,23.0
+tea,21.0
+beans,40.0

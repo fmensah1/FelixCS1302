@@ -1,8 +1,11 @@
 package edu.westga.cs1302.bill.view;
 
 import java.io.IOException;
+import java.util.Comparator;
 
 import edu.westga.cs1302.bill.model.Bill;
+import edu.westga.cs1302.bill.model.BillAscendingCostComparator;
+import edu.westga.cs1302.bill.model.BillDescendingCostComparator;
 import edu.westga.cs1302.bill.model.BillItem;
 import edu.westga.cs1302.bill.model.BillPersistenceManager;
 import edu.westga.cs1302.bill.model.CSVBillPersistenceManager;
@@ -33,6 +36,8 @@ public class MainWindow {
 	private ComboBox<String> serverName;
 	@FXML
 	private ComboBox<BillPersistenceManager> format;
+	@FXML
+	private ComboBox<Comparator<BillItem>> order;
 
 	@FXML
 	void addItem(ActionEvent event) {
@@ -61,6 +66,12 @@ public class MainWindow {
 			this.updateReceipt();
 		}
 	}
+	
+	@FXML
+	void changeOrder(ActionEvent event) {
+		this.bill.sortItems(this.order.getValue());
+		this.updateReceipt();
+	}
 
 	@FXML
 	void saveBillData(ActionEvent event) {
@@ -83,10 +94,14 @@ public class MainWindow {
 		this.serverName.getItems().add("Bob");
 		this.serverName.getItems().add("Alice");
 		this.serverName.getItems().add("Trudy");
+		
 		this.format.getItems().add(new CSVBillPersistenceManager());
 		this.format.getItems().add(new TSVBillPersistenceManager());
-		
 		this.format.setValue(this.format.getItems().get(0));
+		
+		this.order.getItems().add(new BillAscendingCostComparator());
+		this.order.getItems().add(new BillDescendingCostComparator());
+		this.order.setValue(this.order.getItems().get(0));
 		
 		this.bill = this.format.getValue().loadBillData();
 		this.updateReceipt();
