@@ -18,6 +18,7 @@ public class MainWindow {
 	@FXML private ComboBox<String> ingredientType;
 	@FXML private ListView<Ingredient> ingredientsList;
 	@FXML private TextField ingredientName;
+	@FXML private ComboBox<?> sortByComboBox;
 
 	@FXML
 	void addIngredient(ActionEvent event) {
