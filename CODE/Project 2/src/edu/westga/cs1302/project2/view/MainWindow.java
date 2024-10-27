@@ -1,6 +1,10 @@
 package edu.westga.cs1302.project2.view;
 
+import java.util.Comparator;
+
 import edu.westga.cs1302.project2.model.Ingredient;
+import edu.westga.cs1302.project2.model.IngredientNameComparator;
+import edu.westga.cs1302.project2.model.IngredientTypeComparator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -18,7 +22,7 @@ public class MainWindow {
 	@FXML private ComboBox<String> ingredientType;
 	@FXML private ListView<Ingredient> ingredientsList;
 	@FXML private TextField ingredientName;
-	@FXML private ComboBox<?> sortByComboBox;
+	@FXML private ComboBox<Comparator<Ingredient>> sortByComboBox;
 
 	@FXML
 	void addIngredient(ActionEvent event) {
@@ -32,6 +36,7 @@ public class MainWindow {
 			alert.setContentText(error.getMessage());
 			alert.showAndWait();
 		}
+		this.sortIngredientsList();
 	}
 
 	@FXML
@@ -40,6 +45,16 @@ public class MainWindow {
 		if (selectedIngredient != null) {
 			this.ingredientsList.getItems().remove(selectedIngredient);
 		}
+		this.sortIngredientsList();
+	}
+	
+	@FXML
+	void sortIngredients(ActionEvent event) {
+		this.ingredientsList.getItems().sort(this.sortByComboBox.getValue());
+	}
+	
+	private void sortIngredientsList() {
+		this.ingredientsList.getItems().sort(this.sortByComboBox.getValue());
 	}
 
 	@FXML
@@ -49,6 +64,10 @@ public class MainWindow {
 		this.ingredientType.getItems().add("Bread");
 		this.ingredientType.getItems().add("Fruit");
 		this.ingredientType.getItems().add("Spice");
+		
+		this.sortByComboBox.getItems().add(new IngredientNameComparator());
+		this.sortByComboBox.getItems().add(new IngredientTypeComparator());
+		this.sortByComboBox.setValue(this.sortByComboBox.getItems().get(0));   
 
 	}
 }
