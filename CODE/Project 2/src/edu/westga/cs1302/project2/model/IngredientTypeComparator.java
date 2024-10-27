@@ -15,5 +15,9 @@ public class IngredientTypeComparator implements Comparator<Ingredient> {
 		return o1.getType().compareTo(o2.getType());
 			
 	}
-
+	
+	@Override
+	public String toString() {
+		return "Type";
+	}
 }

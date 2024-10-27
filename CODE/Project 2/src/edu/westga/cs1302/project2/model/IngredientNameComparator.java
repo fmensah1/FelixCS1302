@@ -15,4 +15,9 @@ public class IngredientNameComparator implements Comparator<Ingredient> {
 		return o1.getName().compareTo(o2.getName());
 				
 	}
+    
+    @Override
+    public String toString() {
+		return "Name";
+	}
 }
