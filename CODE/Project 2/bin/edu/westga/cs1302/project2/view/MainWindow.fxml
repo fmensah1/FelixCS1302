@@ -26,5 +26,6 @@
       <TextField fx:id="recipeName" layoutX="230.0" layoutY="229.0" prefHeight="25.0" prefWidth="128.0" />
       <Label layoutX="243.0" layoutY="212.0" text="Recipe Name" />
       <Button layoutX="585.0" layoutY="100.0" mnemonicParsing="false" onAction="#addToBook" text="Add to recipe book" />
+      <Label layoutX="243.0" layoutY="83.0" text="Sort By" />
    </children>
 </AnchorPane>
