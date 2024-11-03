@@ -24,12 +24,13 @@ public class RecipeTextifier {
 		}
 		 
 		String text = "Recipe Name : " + recipe.getRecipeName() + System.lineSeparator();
-		text += "Ingredients: ";
+		text += "Ingredients: " + System.lineSeparator();
 		
 		for (Ingredient ingredient : recipe.getItems()) {
 			if (ingredient != null) {
 				text += ingredient.getName() + ", ";
 			}
+			text +=   System.lineSeparator();
 		}
 		return text;
 	}

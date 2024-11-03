@@ -21,7 +21,7 @@
       <Label layoutX="92.0" layoutY="83.0" text="Ingredients" />
       <Line endX="-412.0" endY="-133.0" layoutX="427.0" layoutY="212.0" startX="-200.0" startY="-133.0" />
       <ComboBox fx:id="sortByComboBox" layoutX="243.0" layoutY="100.0" onAction="#sortIngredients" prefHeight="25.0" prefWidth="105.0" />
-      <ListView fx:id="recipe" layoutX="374.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0" />
+      <ListView fx:id="recipeListView" layoutX="374.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0" />
       <Button layoutX="243.0" layoutY="136.0" mnemonicParsing="false" onAction="#addToRecipe" prefHeight="25.0" prefWidth="105.0" text="Add to recipe" />
       <TextField fx:id="recipeName" layoutX="230.0" layoutY="229.0" prefHeight="25.0" prefWidth="128.0" />
       <Label layoutX="243.0" layoutY="212.0" text="Recipe Name" />

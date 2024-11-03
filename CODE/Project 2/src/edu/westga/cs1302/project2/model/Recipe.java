@@ -57,10 +57,11 @@ public class Recipe {
 		if (item == null) {
 			throw new IllegalArgumentException("item must not be null.");
 		}
-		//if (this.size == Bill.MAX_NUMBER_OF_ITEMS) {
-		//throw new IllegalStateException("bill items list is full");
-		//}
-		this.items.add(item);
+		if (this.items.contains(item)) {
+			throw new IllegalArgumentException("item already exists");
+		} else {
+			this.items.add(item);
+		}
 	}
 	
 	/** Return the number of items in the recipe

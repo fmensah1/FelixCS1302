@@ -32,8 +32,8 @@ public class RecipeManager {
 		}
 		
 		try (FileWriter writer = new FileWriter(DATA_FILE, true)) {
-			RecipeTextifier.recipeToText(recipe);
-				
+			writer.write(RecipeTextifier.recipeToText(recipe) + System.lineSeparator() + System.lineSeparator());
+			 		
 		} catch (IOException error) {
             throw new IOException("An error occurred while writing to the file.", error);
         }
