@@ -1,20 +1,83 @@
-commit aca4ffb0af360b10e4967d47d5b64e8a7c4e7038 (HEAD -> main, origin/main, origin/HEAD, Feature/DisplayRecipes)
+ 901c2d134deb304af9be1279ca1550cb13486a1e
 Author: fmensah1 <fmensah1@my.westga.edu>
-Date:   Mon Nov 4 06:42:43 2024 -0500
+Date:   Sat Oct 26 23:05:13 2024 -0400
 
-    Updated MainWindow
+    Updated GUI
+    
+    Added ListView to store ingredient for the recipe, button to add ingredient to recipe, text field for recipe name and button to add a recipe to recipe book.
 
-     Added functionality to display the String representation of the list of recipes in the recipes list TextArea also created test cases for my classes and methods
-
-commit 3cedcc3b5bd1d806bf808cb9d606999606e709dd
+commit 8e66621d319a16850dc544c0a09f40372741ae14
 Author: fmensah1 <fmensah1@my.westga.edu>
-Date:   Sun Nov 3 21:03:26 2024 -0500
+Date:   Sat Oct 26 22:29:54 2024 -0400
 
-    Implemented a method and a class
+    Implemented functionality to sort Ingredient
+    
+    Updated MainWindow to initialize the sort criteria combobox to store a TypeComparator and NameComparator. • Added sortIngredient() to be triggered when a sort criteria is selected to sort the list of ingredients using the currently selected sort criteria. Updated adding and removing ingredients with sortIngredientList to ensure the list is sorted after it has been updated.
 
-    Created recepiesToString method that converts recipies to string and a RecipeLoader class to load recipes from  a file
-
-commit 797b78051a6414bc176687d398198b9dcf5eccf2
+commit 3896262901208a6f915a7db49da477fa51c9dbc5
 Author: fmensah1 <fmensah1@my.westga.edu>
-Date:   Sun Nov 3 18:51:43 2024 -0500
-:
+Date:   Sat Oct 26 21:11:22 2024 -0400
+
+    Implemented toString() method
+    
+    Implemented a toString() in NameComparator and the TypeComparator to return “Name” and Type.
+
+commit 20c81287414cf8d055d0d582d0b84e0869e4a3e3
+Author: fmensah1 <fmensah1@my.westga.edu>
+Date:   Sat Oct 26 20:46:34 2024 -0400
+
+     Created classes to sort items by name and type
+    
+    Implemented a type and name comparator class to compare Ingredients objects by name and type.
+
+commit 8cc90ddfae7e7d190921d112e689fbc7582ed039
+Author: fmensah1 <fmensah1@my.westga.edu>
+Date:   Thu Oct 24 13:43:26 2024 -0400
+
+    Updated UI
+    
+    Added a combo box to the UI to support sorting items by name and type
+
+commit 12b5d9f116b8aa9f74f068791b816c5658d786e6
+Author: fmensah1 <fmensah1@my.westga.edu>
+Date:   Thu Oct 24 13:26:08 2024 -0400
+
+    Getting Started
+    
+    Added the starter file to the code folder in the repository
+
+commit 8143075dd4b5d4ce3f722df1986cde9ed4006618
+Author: fmensah1 <fmensah1@my.westga.edu>
+Date:   Wed Oct 16 16:22:59 2024 -0400
+
+    Added the log.txt file and the link to the repo to my project
+
+commit 4195d2cdd0a4426fc1849c0b8e95d06b1d419443
+Author: fmensah1 <fmensah1@my.westga.edu>
+Date:   Wed Oct 16 16:08:45 2024 -0400
+
+    Implemented functionality to sort our bill.
+    
+    Created classes to implement functionality to sort our bill in ascending or descending order
+
+commit a802e92086b9d81ab202baf0c4f7f65ea56c43b5
+Author: fmensah1 <fmensah1@my.westga.edu>
+Date:   Wed Oct 16 11:39:11 2024 -0400
+
+    Implemented multiple format functionality
+    
+    Made my BillPersistenceManager class a parent and created child classes CSVBillPersistenceManager and TVSBillPersistenceManager to save and load the bill in the tab format or space format.
+
+commit 0dcc932e6f03807c7fd2f86e97eb73a3a534f508
+Author: fmensah1 <fmensah1@my.westga.edu>
+Date:   Thu Oct 10 15:48:19 2024 -0400
+
+    Added starter file
+    
+    Added the starter file to the repository
+
+commit 79a3028ff77f558b4abe9a7c37063d5080124468
+Author: fmensah1 <fmensah1@my.westga.edu>
+Date:   Mon Oct 7 03:46:17 2024 -0400
+
+    Initial commit
