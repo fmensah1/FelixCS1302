@@ -50,8 +50,16 @@ public class RecipeLoader {
 
         try (Scanner scanner = new Scanner(file)) {
             while (scanner.hasNextLine()) {
-                String recipeName = scanner.nextLine();
-                
+                String recipeName = scanner.nextLine().trim();
+
+                if (recipeName.isEmpty()) {
+                    System.out.println("Warning: Recipe name is empty. Skipping this recipe entry.");
+                    if (scanner.hasNextLine()) {
+                        scanner.nextLine(); 
+                    }
+                    continue;
+                }
+
                 if (!scanner.hasNextLine()) {
                     System.out.println("Warning: Missing ingredients line for recipe: " + recipeName);
                     break;
@@ -62,11 +70,11 @@ public class RecipeLoader {
                 recipe.setRecipeName(recipeName); 
                 String[] ingredients = ingredientsLine.split(", ");
                 for (String ingredientName : ingredients) {
-                    recipe.addItem(new Ingredient(ingredientName, "Unknown"));
+                    recipe.addItem(new Ingredient(ingredientName, "N/A"));
                 }
-                
+
                 recipes.add(recipe);
- 
+
                 if (scanner.hasNextLine()) {
                     scanner.nextLine();
                 }

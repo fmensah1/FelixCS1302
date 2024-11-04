@@ -1,7 +1,8 @@
-Recipe Name : nvcmv
-Ingredients: bmnvxm, nbvcxn, ncm, 
-Recipe Name : rice
-Ingredients: djj, jdkk, kgk, kjd, 
-Recipe Name : gjj
-Ingredients: jxfjjs, djjdk, djd, jdjkd, 
-
+Recipe Name : beef stew
+Ingredients: apple, maize, wheat
+Recipe Name : sdh
+Ingredients: apple
+Recipe Name : sdh
+Ingredients: apple, wheat
+Recipe Name : beef st
+Ingredients: maize, apple, wheat

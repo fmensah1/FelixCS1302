@@ -1,11 +1,12 @@
 package edu.westga.cs1302.project2.view;
 
-
 import java.io.IOException;
 import java.util.Comparator;
+import java.util.List;
 
 import edu.westga.cs1302.project2.model.Ingredient;
 import edu.westga.cs1302.project2.model.Recipe;
+import edu.westga.cs1302.project2.model.RecipeLoader;
 import edu.westga.cs1302.project2.model.RecipeManager;
 import edu.westga.cs1302.project2.model.IngredientNameComparator;
 import edu.westga.cs1302.project2.model.IngredientTypeComparator;
@@ -117,7 +118,36 @@ public class MainWindow {
     
     @FXML
     void displayRecipes(ActionEvent event) {
-       //r
+        Ingredient selectedIngredient = this.ingredientsList.getSelectionModel().getSelectedItem();
+        
+        if (selectedIngredient == null) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText("No Ingredient Selected");
+            alert.setContentText("Please select an ingredient to display recipes.");
+            alert.showAndWait();
+            return;
+        }
+
+        String ingredientName = selectedIngredient.getName();
+
+        List<Recipe> filteredRecipes;
+        RecipeLoader loader = new RecipeLoader("data.txt");
+		filteredRecipes = loader.getAllRecipesWithIngredient(ingredientName);
+
+        String recipeText = "";
+        if (filteredRecipes.isEmpty()) {
+            recipeText = "No recipes found containing the ingredient: " + ingredientName;
+        } else {
+            for (Recipe recipe : filteredRecipes) {
+                recipeText += "Recipe Name: " + recipe.getRecipeName() + "\nIngredients:\n";
+                for (Ingredient ingredient : recipe.getItems()) {
+                    recipeText += " - " + ingredient.getName() + System.lineSeparator();
+                }
+                recipeText += System.lineSeparator(); 
+            }
+        }
+
+        this.recipeArea.setText(recipeText);
     }
 
 	@FXML

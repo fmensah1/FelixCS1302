@@ -32,15 +32,21 @@ public class RecipeManager {
 		}
 		
 		try (FileWriter writer = new FileWriter(DATA_FILE, true)) {
-			writer.write(RecipeTextifier.recipeToText(recipe) + System.lineSeparator() + System.lineSeparator());
+			writer.write(RecipeTextifier.recipeToText(recipe) + System.lineSeparator());
 			 		
 		} catch (IOException error) {
             throw new IOException("An error occurred while writing to the file.", error);
         }
 		 
 	}
-	
-	private boolean recipeExists(String recipeName) throws IOException {
+	/** checks recipe existence
+	 * 
+
+	 * @param recipeName the recipe to verify
+	 * @throws IOException 
+	 * @return true if recipe exits
+	 */
+	public boolean recipeExists(String recipeName) throws IOException {
         try (Scanner scanner = new Scanner(DATA_FILE)) {
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
