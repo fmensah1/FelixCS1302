@@ -1,0 +1,20 @@
+commit aca4ffb0af360b10e4967d47d5b64e8a7c4e7038 (HEAD -> main, origin/main, origin/HEAD, Feature/DisplayRecipes)
+Author: fmensah1 <fmensah1@my.westga.edu>
+Date:   Mon Nov 4 06:42:43 2024 -0500
+
+    Updated MainWindow
+
+     Added functionality to display the String representation of the list of recipes in the recipes list TextArea also created test cases for my classes and methods
+
+commit 3cedcc3b5bd1d806bf808cb9d606999606e709dd
+Author: fmensah1 <fmensah1@my.westga.edu>
+Date:   Sun Nov 3 21:03:26 2024 -0500
+
+    Implemented a method and a class
+
+    Created recepiesToString method that converts recipies to string and a RecipeLoader class to load recipes from  a file
+
+commit 797b78051a6414bc176687d398198b9dcf5eccf2
+Author: fmensah1 <fmensah1@my.westga.edu>
+Date:   Sun Nov 3 18:51:43 2024 -0500
+:
