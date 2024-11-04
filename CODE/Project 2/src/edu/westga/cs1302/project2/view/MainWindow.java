@@ -1,5 +1,6 @@
 package edu.westga.cs1302.project2.view;
 
+
 import java.io.IOException;
 import java.util.Comparator;
 
@@ -13,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 /**
@@ -30,6 +32,7 @@ public class MainWindow {
 	@FXML private TextField recipeName;
 	@FXML private Recipe recipe;
 	@FXML private RecipeManager recipeManager;
+	@FXML private TextArea recipeArea;
 	
 	@FXML
 	void addIngredient(ActionEvent event) {
@@ -110,6 +113,11 @@ public class MainWindow {
             alert.setContentText("An error occurred while saving the recipe.");
             alert.showAndWait();
         }
+    }
+    
+    @FXML
+    void displayRecipes(ActionEvent event) {
+       //r
     }
 
 	@FXML
