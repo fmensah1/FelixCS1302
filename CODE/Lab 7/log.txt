@@ -1,0 +1,23 @@
+commit 5f0d1bf028318308554baf5dc78105cb4b388cc8
+Author: fmensah1 <fmensah1@my.westga.edu>
+Date:   Thu Nov 7 08:43:40 2024 -0500
+
+    Revised Main window
+    
+    Implemented databinding and calls in the MainWindow class to utilize the ViewModel class
+
+commit f9ddef187ea705fc02704d5531ba3e6b54ae4673
+Author: fmensah1 <fmensah1@my.westga.edu>
+Date:   Wed Nov 6 19:48:25 2024 -0500
+
+    Implemented a view model class
+    
+    Implemented a view model that provides appropriate property objects for each of the values needed by the UI and appropriate methods for any behavior.
+
+commit 2bb570bebea753ea1a43e5d041d5f0ab4c2a2ca2
+Author: fmensah1 <fmensah1@my.westga.edu>
+Date:   Tue Nov 5 13:27:55 2024 -0500
+
+    Added project
+    
+    Added the lab7 to the code folder in the local repository.
