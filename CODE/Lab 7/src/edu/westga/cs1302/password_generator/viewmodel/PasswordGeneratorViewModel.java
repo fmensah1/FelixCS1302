@@ -2,9 +2,7 @@ package edu.westga.cs1302.password_generator.viewmodel;
 
 import edu.westga.cs1302.password_generator.model.PasswordGenerator;
 import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -33,6 +31,7 @@ public class PasswordGeneratorViewModel {
 		this.mustIncludeLowerCaseLetters = new SimpleBooleanProperty(false);
 		this.minimumLength = new SimpleStringProperty("1");
 		this.output = new SimpleStringProperty("");
+		this.minimumIntegerErrorLabel = new SimpleStringProperty();
 		this.password = new PasswordGenerator(0);
 	}
 	
@@ -79,6 +78,15 @@ public class PasswordGeneratorViewModel {
 	 */
 	public StringProperty getOutput() {
 		return this.output;
+	}
+	
+	/**
+	  * Gets the error message
+	  * 
+	  * @return error message
+	  */
+	public StringProperty getMinimumIntegerErrorLabel() {
+		return this.minimumIntegerErrorLabel;
 	}
 	
 	/**
