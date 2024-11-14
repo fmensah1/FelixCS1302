@@ -4,9 +4,13 @@ import java.util.Random;
 
 import edu.westga.cs1302.password_generator.model.PasswordGenerator;
 import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /** Manages utilizing the model and makes properties available to bind the UI elements.
  * 
@@ -21,6 +25,7 @@ public class ViewModel {
 	
 	private StringProperty password;
 	private StringProperty errorText;
+	private ListProperty<String> pastPasswords;
 	
     private PasswordGenerator generator;
 	
@@ -33,7 +38,9 @@ public class ViewModel {
 		this.requireUppercase = new SimpleBooleanProperty(false);
 		
 		this.password = new SimpleStringProperty("");
-		this.errorText = new SimpleStringProperty("Invalid Minimum Length: must be a positive integer, but was ");
+		this.errorText = new SimpleStringProperty("Invalid Minimum Length: must be a positive integer.");
+		this.pastPasswords = new SimpleListProperty<>(
+				FXCollections.observableArrayList());
 
         Random randomNumberGenerator = new Random();
         this.generator = new PasswordGenerator(randomNumberGenerator.nextLong());
@@ -86,6 +93,24 @@ public class ViewModel {
 	public StringProperty getErrorText() {
 		return this.errorText;
 	}
+	
+	/**
+	 *  Return list of passwords
+	 *  
+	 * @return the list of passwords
+	 */
+	public ListProperty<String> pastPasswordsProperty() {
+	    return this.pastPasswords;
+	}
+	
+	/**
+	 *  Return list of passwords
+	 *  
+	 * @return the list of passwords
+	 */
+	public ObservableList<String> getPastPasswords() {
+	    return this.pastPasswords.get();
+	}
 
 	/** Generates a password using the minimum length, require digit, require lower case, and require upper case property values.
 	 * 
@@ -118,6 +143,7 @@ public class ViewModel {
     	String password = this.generator.generatePassword();
     	
     	this.password.setValue(password);
+    	this.pastPasswords.add(password);
     }
 
 }
