@@ -33,7 +33,7 @@ public class ViewModel {
 		this.requireUppercase = new SimpleBooleanProperty(false);
 		
 		this.password = new SimpleStringProperty("");
-		this.errorText = new SimpleStringProperty("");
+		this.errorText = new SimpleStringProperty("Invalid Minimum Length: must be a positive integer, but was ");
 
         Random randomNumberGenerator = new Random();
         this.generator = new PasswordGenerator(randomNumberGenerator.nextLong());

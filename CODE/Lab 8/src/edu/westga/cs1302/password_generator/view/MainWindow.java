@@ -36,11 +36,28 @@ public class MainWindow {
     	
     	this.output.textProperty().bind(this.vm.getPassword());
     	this.errorTextLabel.textProperty().bind(this.vm.getErrorText());
-    	
+    	this.errorTextLabel.setVisible(false);
     	this.generatePasswordButton.setOnAction(
     			(event) -> { 
     				this.vm.generatePassword();
     			} 
     	);
+    	
+    	this.minimumLength.textProperty().addListener(
+    			(observable, oldValue, newValue) -> {
+    				try {
+    					if (newValue.matches("\\d*")) {
+    						this.errorTextLabel.setVisible(false);
+    					} else {
+    						this.errorTextLabel.setVisible(true);
+    					}
+    					if (newValue.isBlank()) {
+    						this.errorTextLabel.setVisible(true);
+    					}
+    				} catch (NumberFormatException error) {
+    					this.errorTextLabel.setVisible(true);
+    					}
+    			
+    	});
     }
 }
