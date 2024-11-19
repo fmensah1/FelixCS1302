@@ -30,6 +30,15 @@ class TestGeneratePassword {
 		assertEquals("Invalid Minimum Length: minimum length must be at least 1", vm.getErrorText().getValue(), "checking the error text property");
 	}
 	
-	
+	@Test
+	void testValidInputProvided() {
+		ViewModel vm = new ViewModel();
+		vm.getMinimumLength().setValue("2");
+		
+		vm.generatePassword();
+		
+		assertTrue(vm.getPassword().getValue().length() >= 2, "checking the password property has an appropriate number of characters");
+		assertEquals("", vm.getErrorText().getValue(), "checking the error text property");
+	}
 
 }

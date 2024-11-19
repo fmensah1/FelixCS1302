@@ -50,7 +50,7 @@ public class RecipeLoader {
 
         try (Scanner scanner = new Scanner(file)) {
             while (scanner.hasNextLine()) {
-                String recipeName = scanner.nextLine().trim();
+                String recipeName = scanner.nextLine().trim().split(": ")[1];
 
                 if (recipeName.isEmpty()) {
                     System.out.println("Warning: Recipe name is empty. Skipping this recipe entry.");
@@ -68,7 +68,7 @@ public class RecipeLoader {
                 String ingredientsLine = scanner.nextLine();
                 Recipe recipe = new Recipe();
                 recipe.setRecipeName(recipeName); 
-                String[] ingredients = ingredientsLine.split(", ");
+                String[] ingredients = ingredientsLine.split(": ")[1].split(", ");
                 for (String ingredientName : ingredients) {
                     recipe.addItem(new Ingredient(ingredientName, "N/A"));
                 }
