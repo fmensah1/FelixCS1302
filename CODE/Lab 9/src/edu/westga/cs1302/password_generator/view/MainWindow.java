@@ -39,6 +39,7 @@ public class MainWindow {
     	this.vm.getRequireUppercase().bind(this.mustIncludeUpperCaseLetters.selectedProperty());
     	this.minimumLength.setText(this.vm.getMinimumLength().getValue());
     	this.vm.getMinimumLength().bind(this.minimumLength.textProperty());
+    	this.bindButtonsDisableProperty();
     	
     	this.output.textProperty().bind(this.vm.getPassword());
     	this.errorTextLabel.textProperty().bind(this.vm.getErrorText());
@@ -64,5 +65,10 @@ public class MainWindow {
     				this.vm.generatePassword();
     			} 
     	);
+    }
+    
+    private void bindButtonsDisableProperty() {
+    	this.generatePasswordButton.disableProperty().bind(
+    			this.minimumLength.textProperty().isEmpty());
     }
 }
