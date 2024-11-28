@@ -35,20 +35,20 @@ public class MainWindow {
 			FileChooser fileChooser = new FileChooser();
 			fileChooser.setTitle("Open task file");
 			fileChooser.getExtensionFilters().addAll(
-					new ExtensionFilter("Text files", "*.txt"),
-					new ExtensionFilter("All Files", "*,*"));
+					new ExtensionFilter("Text files", "*.txt", "*.pdf"),
+					new ExtensionFilter("All Files", "*.*"));
 		File selectedFile = fileChooser.showOpenDialog(null);
 		if (selectedFile != null) {
 			try {
-	            // Call loadTasks and pass the selected file's path
 	            TaskList loadedTasks = this.taskManager.loadTasks(selectedFile.getAbsolutePath());
-
-	            // Update your TaskList or UI elements here
-	            this.vm.setTaskList(loadedTasks.getTasks()); // Assuming ViewModel has setTaskList method
-	        } catch (Exception e) {
-	            // Handle any exceptions (e.g., invalid file format)
+	            this.vm.setTaskList(loadedTasks.getTasks()); 
+	        } catch (IllegalArgumentException error) {
 	            Alert alert = new Alert(Alert.AlertType.ERROR);
-	            alert.setContentText("Failed to load tasks: " + e.getMessage());
+	            alert.setContentText("Invalid file format: " + error.getMessage());
+	            alert.show();
+	        } catch (Exception error) {
+	            Alert alert = new Alert(Alert.AlertType.ERROR);
+	            alert.setContentText("Failed to load tasks: " + error.getMessage());
 	            alert.show();
 	        }
 		}

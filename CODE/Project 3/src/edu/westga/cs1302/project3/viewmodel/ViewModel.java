@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import edu.westga.cs1302.project3.model.Task;
 import edu.westga.cs1302.project3.model.TaskList;
-import edu.westga.cs1302.project3.model.TaskManager;
 import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,7 +17,6 @@ public class ViewModel {
 	private TaskList tasks;
 	
 	private ObservableList<Task> taskList;
-	private TaskManager taskManager;
 
 	/**
 	 * Instantiates a new student info view model.
@@ -27,7 +25,6 @@ public class ViewModel {
 		this.tasks = new TaskList();
 		this.setDefaultTasks();
 		this.taskList = new SimpleListProperty<Task>(FXCollections.observableArrayList(this.tasks.getTasks()));
-		this.taskManager = new TaskManager();
 	}
 	
 	private void setDefaultTasks() {
@@ -44,15 +41,17 @@ public class ViewModel {
 	public ObservableList<Task> getTaskList() {
 		return this.taskList;
 	}
-
+	
+	/** Set the taskList
+	 * 
+	 * @param tasks2 list of tasks aside default
+	 */
 	public void setTaskList(ArrayList<Task> tasks2) {
 	    if (tasks2 == null) {
 	        throw new IllegalArgumentException("Task list cannot be null");
 	    }
 	    this.taskList.setAll(tasks2);
 	}
-
-
 }
 	
 	
