@@ -54,26 +54,30 @@ public class MainWindow {
 			this.saveTasks();
 		});
 		this.addTaskButton.setOnAction((event)-> {
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(Main.class.getResource(Main.ADD_TASK_WINDOW));
-			try {
-				loader.load();
-				Parent parent = loader.getRoot();
-				Scene scene = new Scene(parent);
-				Stage setPropertyStage = new Stage();
-				setPropertyStage.setTitle(Main.ADD_TASK_WINDOW_TITLE);
-				setPropertyStage.setScene(scene);
-				setPropertyStage.initModality(Modality.APPLICATION_MODAL);
-				//AddTaskWindow propertyCodebehind = (AddTaskWindow) loader.getController();
-			
-				setPropertyStage.showAndWait();
-			} catch (IOException error) {
-				Alert alert = new Alert(AlertType.ERROR);
-				alert.setContentText("Unable to load properties window.");
-				alert.showAndWait();
-			}
+			this.openAddTaskWindow();
 		}
 );
+	}
+
+	private void openAddTaskWindow() {
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(Main.class.getResource(Main.ADD_TASK_WINDOW));
+		try {
+			loader.load();
+			Parent parent = loader.getRoot();
+			Scene scene = new Scene(parent);
+			Stage setPropertyStage = new Stage();
+			setPropertyStage.setTitle(Main.ADD_TASK_WINDOW_TITLE);
+			setPropertyStage.setScene(scene);
+			setPropertyStage.initModality(Modality.APPLICATION_MODAL);
+			//AddTaskWindow propertyCodebehind = (AddTaskWindow) loader.getController();
+		
+			setPropertyStage.showAndWait();
+		} catch (IOException error) {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setContentText("Unable to load properties window.");
+			alert.showAndWait();
+		}
 	}
 
 	private void saveTasks() {
