@@ -66,16 +66,16 @@ public class MainWindow {
 			loader.load();
 			Parent parent = loader.getRoot();
 			Scene scene = new Scene(parent);
-			Stage setPropertyStage = new Stage();
-			setPropertyStage.setTitle(Main.ADD_TASK_WINDOW_TITLE);
-			setPropertyStage.setScene(scene);
-			setPropertyStage.initModality(Modality.APPLICATION_MODAL);
-			//AddTaskWindow propertyCodebehind = (AddTaskWindow) loader.getController();
-		
-			setPropertyStage.showAndWait();
+			Stage setTaskWindowStage = new Stage();
+			setTaskWindowStage.setTitle(Main.ADD_TASK_WINDOW_TITLE);
+			setTaskWindowStage.setScene(scene);
+			setTaskWindowStage.initModality(Modality.APPLICATION_MODAL);
+			AddTaskWindow addTaskWindow = (AddTaskWindow) loader.getController();
+			addTaskWindow.bindToVM(this.vm);
+			setTaskWindowStage.showAndWait();
 		} catch (IOException error) {
 			Alert alert = new Alert(AlertType.ERROR);
-			alert.setContentText("Unable to load properties window.");
+			alert.setContentText("Unable to add task window.");
 			alert.showAndWait();
 		}
 	}

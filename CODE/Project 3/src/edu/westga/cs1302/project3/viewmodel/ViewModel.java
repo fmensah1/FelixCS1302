@@ -5,8 +5,11 @@ import java.util.ArrayList;
 import edu.westga.cs1302.project3.model.Task;
 import edu.westga.cs1302.project3.model.TaskList;
 import javafx.beans.property.SimpleListProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
 
 /** Manages utilizing the model and makes properties available to bind the UI elements.
 * 
@@ -14,14 +17,18 @@ import javafx.collections.ObservableList;
 * @version Fall 2024
 */
 public class ViewModel {
-	private TaskList tasks;
+	private StringProperty taskTitle;
+	private StringProperty taskDescription;
 	
 	private ObservableList<Task> taskList;
-
+	private TaskList tasks;
+	
 	/**
 	 * Instantiates a new student info view model.
 	 */
 	public ViewModel() {
+		this.taskTitle = new SimpleStringProperty("");
+		this.taskDescription = new SimpleStringProperty("");
 		this.tasks = new TaskList();
 		this.setDefaultTasks();
 		this.taskList = new SimpleListProperty<Task>(FXCollections.observableArrayList(this.tasks.getTasks()));
@@ -51,6 +58,39 @@ public class ViewModel {
 	        throw new IllegalArgumentException("Task list cannot be null");
 	    }
 	    this.taskList.setAll(tasks2);
+	}
+	
+	/** Gets the string property for title
+	 * 
+	 * @return string property
+	 */
+	public StringProperty getTaskTitle() {
+		return this.taskTitle;
+	}
+	
+	/** Gets the task description
+	 * 
+	 * @return string property
+	 */
+	public StringProperty getTaskDescription() {
+		return this.taskDescription;
+	}
+	
+	/** Adds a new task to the list
+	 * 
+	 */
+	public void addTask() {
+		String title = this.taskTitle.get();
+		String description = this.taskDescription.get();
+		try {
+		Task task = new Task(title, description);
+		this.taskList.add(task);
+		} catch (IllegalArgumentException invalidLengthError) {
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setHeaderText("Inalid Task");
+			alert.setContentText("Provide Task title and description");
+			alert.showAndWait();
+		}
 	}
 }
 	
