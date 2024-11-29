@@ -92,6 +92,16 @@ public class ViewModel {
 			alert.showAndWait();
 		}
 	}
+	
+	/**
+	 * remove task
+	 * @param task to be removed
+	 */
+	public void removeTask(Task task) {
+		if (task != null) {
+			this.taskList.remove(task);
+		}
+	}
 }
 	
 	

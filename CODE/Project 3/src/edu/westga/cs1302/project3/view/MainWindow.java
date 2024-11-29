@@ -38,6 +38,8 @@ public class MainWindow {
 	private MenuItem saveMenuItem;
 	@FXML
     private Button addTaskButton;
+    @FXML
+    private Button removeTask;
 
 	private ViewModel vm;
 	private TaskManager taskManager;
@@ -55,8 +57,18 @@ public class MainWindow {
 		});
 		this.addTaskButton.setOnAction((event)-> {
 			this.openAddTaskWindow();
-		}
-);
+		});
+		this.removeTask.setOnAction((event) -> {
+		    Task selectedTask = this.taskListView.getSelectionModel().getSelectedItem();
+		    if (selectedTask != null) {
+		        this.vm.removeTask(selectedTask);
+		    } else {
+		        Alert alert = new Alert(Alert.AlertType.WARNING);
+		        alert.setContentText("No task selected to remove.");
+		        alert.show();
+		    }
+		});
+
 	}
 
 	private void openAddTaskWindow() {
