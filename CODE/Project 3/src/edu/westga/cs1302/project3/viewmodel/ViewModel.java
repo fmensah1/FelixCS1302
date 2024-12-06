@@ -1,6 +1,6 @@
 package edu.westga.cs1302.project3.viewmodel;
 
-import java.util.ArrayList;
+import java.util.Collection;
 
 import edu.westga.cs1302.project3.model.Task;
 import edu.westga.cs1302.project3.model.TaskList;
@@ -31,7 +31,7 @@ public class ViewModel {
 		this.taskDescription = new SimpleStringProperty("");
 		this.tasks = new TaskList();
 		this.setDefaultTasks();
-		this.taskList = new SimpleListProperty<Task>(FXCollections.observableArrayList(this.tasks.getTasks()));
+		this.taskList = new SimpleListProperty<Task>(FXCollections.observableArrayList(this.tasks.getTasks().values()));
 	}
 	
 	private void setDefaultTasks() {
@@ -53,13 +53,13 @@ public class ViewModel {
 	 * 
 	 * @param tasks2 list of tasks aside default
 	 */
-	public void setTaskList(ArrayList<Task> tasks2) {
+	public void setTaskList(Collection<Task> tasks2) {
 	    if (tasks2 == null) {
 	        throw new IllegalArgumentException("Task list cannot be null");
 	    }
 	    this.taskList.setAll(tasks2);
 	}
-	
+
 	/** Gets the string property for title
 	 * 
 	 * @return string property
@@ -84,11 +84,12 @@ public class ViewModel {
 		String description = this.taskDescription.get();
 		try {
 		Task task = new Task(title, description);
+		this.tasks.addTask(task);
 		this.taskList.add(task);
 		} catch (IllegalArgumentException invalidLengthError) {
 			Alert alert = new Alert(Alert.AlertType.ERROR);
 			alert.setHeaderText("Inalid Task");
-			alert.setContentText("Provide Task title and description");
+			alert.setContentText("Provide a valid Task title and description that doesn't exists already");
 			alert.showAndWait();
 		}
 	}

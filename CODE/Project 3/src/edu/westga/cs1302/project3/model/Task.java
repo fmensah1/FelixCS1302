@@ -1,33 +1,34 @@
 package edu.westga.cs1302.project3.model;
 
-/** Stores information for a Task.
-*
-* @author fmensah1
-* @version Fall 2024
-*/
+/**
+ * Stores information for a Task.
+ *
+ * @author fmensah1
+ * @version Fall 2024
+ */
 public class Task {
 
 	private String taskTitle;
 	private String taskDescription;
-	
+
 	/**
 	 * Creates a new Task object with the specified title and description.
 	 *
-	 * @param title the title
+	 * @param title       the title
 	 * @param description the description
-	 * @preconditon title != null || title.isEmpty()
-	 * 				title != null || description != null
-	 * @postcondition getTitle() == taskTitle &&
-	 * 					description.isEmpty()) = taskDescription
+	 * @preconditon title != null || title.isEmpty() title != null || description !=
+	 *              null
+	 * @postcondition getTitle() == taskTitle && description.isEmpty()) =
+	 *                taskDescription
 	 */
-	public Task(String title, String description)	{
+	public Task(String title, String description) {
 		if (title == null || title.isEmpty()) {
 			throw new IllegalArgumentException("Invalid title");
 		}
 		if (description == null || description.isEmpty()) {
 			throw new IllegalArgumentException("Invalid description");
 		}
-		
+
 		this.taskTitle = title;
 		this.taskDescription = description;
 	}
@@ -67,10 +68,10 @@ public class Task {
 	public void setTaskDescription(String taskDescription) {
 		this.taskDescription = taskDescription;
 	}
-	
+
 	@Override
 	public String toString() {
-	    return this.taskTitle; 
+		return this.taskTitle;
 	}
-	
+
 }

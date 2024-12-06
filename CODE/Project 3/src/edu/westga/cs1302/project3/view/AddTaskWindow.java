@@ -8,15 +8,16 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-/** Codebehind for the Add Task Window of the application.
+/**
+ * Codebehind for the Add Task Window of the application.
  * 
  * @author CS 1302
  * @version Fall 2024
  */
 public class AddTaskWindow {
 
-    @FXML
-    private Button addTaskButton;
+	@FXML
+	private Button addTaskButton;
 	@FXML
 	private TextArea descriptonTextArea;
 
@@ -25,30 +26,31 @@ public class AddTaskWindow {
 
 	@FXML
 	private TextField titleTextfield;
-	@FXML	
-    private Button cancelButton;
-	
+	@FXML
+	private Button cancelButton;
+
 	/**
 	 * Binds to view model
+	 * 
 	 * @param vm view modelS
 	 */
 	public void bindToVM(ViewModel vm) {
 		vm.getTaskTitle().bind((this.titleTextfield.textProperty()));
 		vm.getTaskDescription().bind((this.descriptonTextArea.textProperty()));
-		
-		this.addTaskButton.setOnAction((event)-> {
-		 vm.addTask();
-		 this.closeStage();
+
+		this.addTaskButton.setOnAction((event) -> {
+			vm.addTask();
+			this.closeStage();
 		});
-		
+
 		this.cancelButton.setOnAction((event) -> {
-    		this.closeStage();
-    	});
-    	
+			this.closeStage();
+		});
+
 	}
 
 	private void closeStage() {
 		Stage stage = (Stage) (this.guiPane).getScene().getWindow();
- 		stage.close();
+		stage.close();
 	}
 }

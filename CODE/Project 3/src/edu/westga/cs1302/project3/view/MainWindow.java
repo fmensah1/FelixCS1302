@@ -17,6 +17,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Modality;
@@ -37,9 +38,11 @@ public class MainWindow {
 	@FXML
 	private MenuItem saveMenuItem;
 	@FXML
-    private Button addTaskButton;
-    @FXML
-    private Button removeTask;
+	private Button addTaskButton;
+	@FXML
+	private Button removeTask;
+	@FXML
+	private AnchorPane guiPane;
 
 	private ViewModel vm;
 	private TaskManager taskManager;
@@ -49,24 +52,25 @@ public class MainWindow {
 		this.vm = new ViewModel();
 		this.taskManager = new TaskManager();
 		this.taskListView.setItems(this.vm.getTaskList());
+		
 		this.loadMenuItem.setOnAction((event) -> {
 			this.loadTask();
 		});
 		this.saveMenuItem.setOnAction((event) -> {
 			this.saveTasks();
 		});
-		this.addTaskButton.setOnAction((event)-> {
+		this.addTaskButton.setOnAction((event) -> {
 			this.openAddTaskWindow();
 		});
 		this.removeTask.setOnAction((event) -> {
-		    Task selectedTask = this.taskListView.getSelectionModel().getSelectedItem();
-		    if (selectedTask != null) {
-		        this.vm.removeTask(selectedTask);
-		    } else {
-		        Alert alert = new Alert(Alert.AlertType.WARNING);
-		        alert.setContentText("No task selected to remove.");
-		        alert.show();
-		    }
+			Task selectedTask = this.taskListView.getSelectionModel().getSelectedItem();
+			if (selectedTask != null) {
+				this.vm.removeTask(selectedTask);
+			} else {
+				Alert alert = new Alert(Alert.AlertType.WARNING);
+				alert.setContentText("No task selected to remove.");
+				alert.show();
+			}
 		});
 
 	}
@@ -95,9 +99,10 @@ public class MainWindow {
 	private void saveTasks() {
 		FileChooser fileChooser = new FileChooser();
 		fileChooser.setTitle("Choose task file");
-		fileChooser.getExtensionFilters().addAll(new ExtensionFilter("Text files", "*.txt", "*.pdf"),
+		fileChooser.getExtensionFilters().addAll(new ExtensionFilter("Text files", "*.txt"),
 				new ExtensionFilter("All files", "*."));
-		File selectedFile = fileChooser.showOpenDialog(null);
+		Stage stage = (Stage) this.guiPane.getScene().getWindow();
+		File selectedFile = fileChooser.showOpenDialog(stage);
 		if (selectedFile != null) {
 			try {
 				TaskList taskList = new TaskList();
@@ -120,13 +125,15 @@ public class MainWindow {
 	private void loadTask() {
 		FileChooser fileChooser = new FileChooser();
 		fileChooser.setTitle("Open task file");
-		fileChooser.getExtensionFilters().addAll(new ExtensionFilter("Text files", "*.txt", "*.pdf"),
+		fileChooser.getExtensionFilters().addAll(
+				new ExtensionFilter("Text files", "*.txt"),
 				new ExtensionFilter("All Files", "*.*"));
-		File selectedFile = fileChooser.showOpenDialog(null);
+		Stage stage = (Stage) this.guiPane.getScene().getWindow();
+		File selectedFile = fileChooser.showOpenDialog(stage);
 		if (selectedFile != null) {
 			try {
 				TaskList loadedTasks = this.taskManager.loadTasks(selectedFile.getAbsolutePath());
-				this.vm.setTaskList(loadedTasks.getTasks());
+				this.vm.setTaskList(loadedTasks.getTasks().values());
 			} catch (IllegalArgumentException error) {
 				Alert alert = new Alert(Alert.AlertType.ERROR);
 				alert.setContentText("Invalid file format: " + error.getMessage());
